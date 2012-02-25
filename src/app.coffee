@@ -55,7 +55,7 @@ app.router.post '/', ->
   @res.writeHead 200, 'Content-Type': 'text/html'
   coffeecup = convert @req.body.html, @res, prefix: '', (err) =>
     console.log err if err?
-  @res.end()
+    @res.end()
 app.router.get '/', ->
   @res.writeHead 200, 'Content-Type': 'text/html'
   @res.end coffeecup.render(page, html: '', coffeecup: '')
