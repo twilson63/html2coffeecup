@@ -23,6 +23,10 @@ page = function() {
         name: 'keywords',
         content: 'coffeescript, coffeecup, coffeekup, html2coffee, html2coffeekup, html2coffeecup'
       });
+      meta({
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, maximum-scale=1'
+      });
       link({
         rel: 'stylesheet',
         href: '/stylesheets/base.css'
