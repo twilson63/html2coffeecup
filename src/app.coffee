@@ -22,6 +22,7 @@ page = ->
       div '.container', ->
         h1 'HTML2CoffeeCup'
         h3 'Convert your HTML to CoffeeCup'
+        a href: 'https://github.com/twilson63/html2coffeecup', 'View Source on Github'
         form method: 'POST', action: '/', ->
           p ->
             label "html"
@@ -45,4 +46,4 @@ app.router.post '/', ->
 app.router.get '/', ->
   @res.writeHead 200, 'Content-Type': 'text/html'
   @res.end coffeecup.render(page, html: '', coffeecup: '')
-app.start 3000
+app.start process.env.VMC_APP_PORT or 3000

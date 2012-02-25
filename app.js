@@ -36,6 +36,9 @@ page = function() {
       return div('.container', function() {
         h1('HTML2CoffeeCup');
         h3('Convert your HTML to CoffeeCup');
+        a({
+          href: 'https://github.com/twilson63/html2coffeecup'
+        }, 'View Source on Github');
         return form({
           method: 'POST',
           action: '/'
@@ -97,4 +100,4 @@ app.router.get('/', function() {
   }));
 });
 
-app.start(3000);
+app.start(process.env.VMC_APP_PORT || 3000);
