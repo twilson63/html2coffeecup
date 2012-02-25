@@ -1,4 +1,4 @@
-var app, coffeecup, convert, flatiron, page;
+var app, coffeecup, convert, filed, flatiron, page;
 
 require('coffee-script');
 
@@ -6,13 +6,36 @@ coffeecup = require('coffeecup');
 
 convert = require('html2coffeekup').convert;
 
+filed = require('filed');
+
 flatiron = require('flatiron');
 
 page = function() {
   doctype(5);
   return html(function() {
     head(function() {
-      return title('html2coffeecup');
+      title('html2coffeecup');
+      meta({
+        name: 'description',
+        content: 'Convert html 2 coffeekup or coffeecup'
+      });
+      meta({
+        name: 'keywords',
+        content: 'coffeescript, coffeecup, coffeekup, html2coffee, html2coffeekup, html2coffeecup'
+      });
+      link({
+        rel: 'stylesheet',
+        href: '/stylesheets/base.css'
+      });
+      link({
+        rel: 'stylesheet',
+        href: '/stylesheets/skeleton.css'
+      });
+      link({
+        rel: 'stylesheet',
+        href: '/stylesheets/layout.css'
+      });
+      return comment('[if lt IE 9]>\r\n\t<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>\r\n<![endif]');
     });
     return body(function() {
       script({
@@ -34,39 +57,42 @@ page = function() {
         });
       });
       return div('.container', function() {
-        h1('HTML2CoffeeCup');
-        h3('Convert your HTML to CoffeeCup');
-        a({
-          href: 'https://github.com/twilson63/html2coffeecup'
-        }, 'View Source on Github');
-        return form({
+        h1('html2CoffeeCup');
+        small('Convert your HTML to CoffeeCup');
+        form({
           method: 'POST',
           action: '/'
         }, function() {
           p(function() {
-            label("html");
-            br();
             return textarea({
               name: 'html',
-              style: 'height:100px;width:90%'
+              placeholder: '< insert your html here >',
+              style: 'height:150px;width:98%'
             }, function() {
               return this.html;
             });
           });
-          hr();
           p(function() {
-            label("coffeecup");
-            br();
+            return button({
+              style: 'width: 100%'
+            }, '<-- CONVERT -->');
+          });
+          return p(function() {
             return textarea({
               name: 'coffeecup',
-              style: 'height:100px;width:90%'
+              placeholder: '< press [convert] and see your coffeecup >',
+              style: 'height:150px;width:98%'
             }, function() {
               return this.coffeecup;
             });
           });
-          return p(function() {
-            return button('Convert');
-          });
+        });
+        return div({
+          style: 'text-align:center'
+        }, function() {
+          return a({
+            href: 'https://github.com/twilson63/html2coffeecup'
+          }, 'View Source on Github');
         });
       });
     });
@@ -98,6 +124,10 @@ app.router.get('/', function() {
     html: '',
     coffeecup: ''
   }));
+});
+
+app.router.get('/stylesheets/:css', function(css) {
+  return filed("./public/stylesheets/" + css).pipe(this.res);
 });
 
 app.start(process.env.VMC_APP_PORT || 3000);
