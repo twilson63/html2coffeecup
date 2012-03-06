@@ -31,12 +31,12 @@ page = ->
       div '.container', ->
         h1 'html2CoffeeCup'
         div style: 'float:right', ->
-          a '.twitter-share-button', href: 'https://twitter.com/share', 'data-url': 'http://html2coffeecup.cloudfoundry.com', 'data-text': '@twilson63 when I get to use #coffeecup, I prefer #html2coffeekup #coffeescript', 'Tweet'
+          a '.twitter-share-button', href: 'https://twitter.com/share', 'data-url': 'http://html2coffeecup.nodejitsu.com', 'data-text': 'Convert your html to coffeecup! #coffeescript #nodejs', 'Tweet'
           script '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");'
           br()
           a '.twitter-follow-button', href: 'https://twitter.com/twilson63', 'data-show-count': 'false', 'Follow @twilson63'
           script '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");'
-          
+
         small 'Convert your HTML to CoffeeCup'
         form method: 'POST', action: '/', ->
           p ->
