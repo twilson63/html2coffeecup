@@ -128,7 +128,7 @@ app.router.post('/', function() {
   this.res.writeHead(200, {
     'Content-Type': 'text/html'
   });
-  return coffeecup = convert(this.req.body.html, this.res, {
+  return convert(this.req.body.html, this.res, {
     prefix: ''
   }, function(err) {
     if (err != null) console.log(err);
